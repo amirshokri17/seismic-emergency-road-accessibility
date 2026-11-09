@@ -1,45 +1,49 @@
-# Custom Dijkstra routing — documented implementation
+# Custom Dijkstra routing — implemented method
 
-**Source examined:** `29_emergency_service_accessibility_analysis.py` from the original GPEM scripts archive. This file has not yet been uploaded to the public repository; the description below reflects the source previously reviewed.
+**Published implementation:** [Script 29](../scripts/29_emergency_service_accessibility_analysis.py). Its numerical routing logic is retained from the original team project; publication-specific path configuration and the final-output deletion default are the only changes.
 
-## Edge-weight model
+## 1. Graph construction
 
-For a traversable edge, the original implementation uses
+- Road line features become edges between successive vertices, with rounded metric node keys.
+- A bidirectional adjacency list connects nodes. Full one-way rules, turn restrictions, speed and live traffic are not modeled.
+- Emergency service origins and destination targets are connected/snapped to modeled road nodes.
+- Invalid or non-noded road crossings may appear disconnected even if geometries seem to intersect on a map.
+
+## 2. Numerical routing cost
+
+For each traversable edge:
 
 ```text
 edge_cost = edge_length × damage_multiplier
 ```
 
-| Edge condition | Multiplier or routing rule |
+| Condition | Multiplier / treatment |
 | --- | --- |
-| No confirmed damage / validation flag | ×1.0 |
+| No confirmed damage and no validation warning | ×1 |
 | Confirmed Class 1 | ×1.5 |
-| Confirmed Class 2 | ×5.0 |
-| Confirmed Class 3 (conservative scenario) | Exclude edge |
-| Confirmed Class 3 (degraded scenario) | ×100.0 |
-| Unverified candidate without confirmed damage | ×2.0 |
+| Confirmed Class 2 | ×5 |
+| Confirmed Class 3, conservative scenario | Edge excluded |
+| Confirmed Class 3, degraded scenario | ×100 |
+| Validation-needed only (no confirmed class) | ×2 |
 
-Confirmed classes take precedence over the uncertainty flag. Road emergency-use attributes can affect whether an edge is eligible for traversal.
+Confirmed class takes precedence over validation-only warning. Emergency-use flags can render an edge ineligible for standard emergency routing.
 
-**Important:** The script does *not* include separate numerical multipliers for road type and available width inside its `edge_cost` function. Width contributes later to access classification. This is narrower than the generalized cost formula described in the academic report.
+The implementation uses **Dijkstra's shortest-path algorithm** on non-negative edge weights. It is a least-cost routing model, not shortest estimated travel time.
 
-## Graph creation
+**Important discrepancy with the report's generalized equation:** Road-type and road-width terms do **not** appear as separate numerical factors in `edge_cost()`. Road width is used later to interpret and classify route and corridor usability.
 
-- Road linework is represented as graph links between successive polyline vertices / rounded node positions.
-- Connections are built as bidirectional edges; direction and turn restrictions are not fully modeled.
-- Crossing geometries that are not noded may remain disconnected.
-- Facility and target locations must be connected/snap to the modeled graph to produce valid paths.
+## 3. Scenarios
 
-## How to interpret scenarios
+- **Conservative:** High-impact Class 3 edges are excluded; accessibility may fail if no alternative exists.
+- **Degraded:** These edges may be traversed with ×100 penalty to expose possible bottlenecks. This is **not** evidence that blocked roads are safe or physically passable.
+- **Uncertain:** Non-verified damage candidates are handled as uncertain evidence, not confirmed closures.
 
-- **Conservative:** Routes avoiding Class 3 blocked roads wherever the graph permits.
-- **Degraded:** Highly penalized Class 3 links may appear to identify a possible bottleneck. Their presence is *not proof of passability*.
-- **Uncertainty:** Unverified damage candidates affect interpretation and may receive a separate penalty, but are not equivalent to confirmed closures.
+## 4. Corridor interpretation
 
-The route/corridor post-processing considers damage exposure, usable-width assumptions, uncertain sections and selected emergency origin–destination relationships.
+Outputs include selected service-to-target routes, target accessibility assessments and an emergency corridor network. Damage exposure, available-width assumptions and uncertainty affect subsequent classifications. [Script 31](../scripts/31_update_road_reopening_priority_from_corridors.py) links confirmed damaged road sections to these corridors for reopening priorities.
 
-## Limitations
+## 5. Tests and limits
 
-This is an academically developed **emergency accessibility approximation**, not a road-safety certification or realistic travel-time simulation. It omits complete one-way, intersection-turn, vehicle-specific restrictions, live closures and traffic speeds. The current publication does not include the geodatabase needed to reproduce the geographic results.
+The tests in [tests/test_routing_core.py](../tests/test_routing_core.py) extract the *actual* Graph/Dijkstra definitions without ArcPy and check penalties, blocked-edge avoidance, degraded routing and emergency-use flags. They do **not** validate the geodatabase, ArcGIS operations, geographic accuracy or road safety.
 
-See [Architecture](architecture.md) and [Publication checklist](../PUBLICATION_CHECKLIST.md).
+See [Architecture](architecture.md), [Data contract](data-contract.md), and [Limitations](limitations.md).
