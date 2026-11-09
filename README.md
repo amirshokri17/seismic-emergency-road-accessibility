@@ -16,24 +16,9 @@ We investigated how to translate road-damage evidence into **emergency accessibi
 
 ## Workflow
 
-```mermaid
-flowchart TD
-    A[OSM road network] --> B[27 - Preserve connectivity; classify roads]
-    S[Emergency facilities] --> C[26 - Clean response origins]
-    T[Amatrice / Accumoli / Illica] --> D[28 - Prepare targets]
-    F[Provided and reviewed damage] --> G[Damage sections and uncertainty]
-    B --> H[29 - Build weighted road graph]
-    C --> H
-    D --> H
-    G --> H
-    H --> I[Custom Dijkstra: conservative / degraded paths]
-    I --> J[Response corridors and target access status]
-    G --> K[31 - Confirmed damaged sections]
-    J --> K
-    K --> L[Reopening priority 1 / 2 / 3]
-    J --> M[Maps and WebGIS visualization]
-    L --> M
-```
+![GPEM analytical workflow — from four input streams to Dijkstra corridors, reopening priorities and a published ArcGIS service](assets/workflow-architecture.svg)
+
+[View the full-size architecture diagram](assets/workflow-architecture.svg). The input preparation stage, routing algorithm and published outputs are intentionally separated to make the technical dependencies clear.
 
 The original project included additional preprocessing and an exploratory image-screening stage. Those experimental scripts are **not part of this curated technical repository**; see [Architecture](docs/architecture.md).
 
@@ -99,9 +84,22 @@ python -m unittest discover -s tests -v
 
 The full ArcPy/GIS workflow, route counts and mapped results cannot be independently reproduced without the project datasets and environment. These tests should **not** be interpreted as geospatial or operational validation.
 
-## Report, maps and WebGIS
+## Published ArcGIS data service and portfolio
 
-The 42-page group report also covers Norcia vulnerability/damage scenarios and a 25-municipality assessment. The report PDF, original maps and **public WebGIS link** will be added after sharing permissions and anonymous access are confirmed; see [Report and WebGIS notes](docs/webgis-and-report.md).
+**[GPEM_ROAD_MANAGEMENT — ArcGIS FeatureServer](https://services7.arcgis.com/XOvkSqDDbi6QLE5s/arcgis/rest/services/GPEM_ROAD_MANAGEMENT/FeatureServer)** is the published **geospatial data-service endpoint** documented in Section 14.3 of the updated academic report (46 pages). The report organizes its layers into:
+
+| Published group | Project outputs |
+| --- | --- |
+| Base network and context | OSM Road Network, Emergency Service Centers, Emergency Response Targets |
+| Road damage and uncertainty | Ground Truth, damaged sections, confirmed acquired damage and validation-needed sections |
+| Emergency accessibility | Emergency Response Corridor Network, Emergency Target Accessibility Status |
+| Early recovery | Emergency Road Reopening Priority, with supporting spatial layers |
+
+The URL is a **FeatureServer REST service**, *not* a finished end-user web dashboard. The report describes web-map configuration, dashboard development and mobile field validation as **implementation steps**, not features already demonstrated here. Service content and anonymous accessibility should be tested directly by prospective users; live verification was unavailable in the review environment.
+
+The updated **46-page group report remains unpublished** in this repository. Instead, a focused portfolio presentation is being prepared for review, using selected source maps from pages 23, 37 and 41 and a clearer two-stage workflow diagram. For context, Part I of the report also covers Norcia seismic vulnerability and damage scenarios and 25 municipalities; the curated repository emphasizes the stronger Part II automation, Dijkstra and reopening strategies.
+
+For WebGIS status, implementation boundaries and source-layer groups, read [Published service notes](docs/webgis-and-report.md).
 
 ## Team and attribution
 
