@@ -28,4 +28,4 @@ A FeatureServer is not a route-planning site. The available-width assumptions, d
 
 The repository highlights the selected ArcPy automation scripts, the custom Dijkstra route-cost implementation and road reopening priority logic, rather than publishing the full report or unsuccessful experimental ML model-training code.
 
-The project report credits **Amirhossein Shokri, Nima Khamsehzadeh, Sildev Kumar Ray and MohammadReza Abolhasani**. A separate, focused PDF portfolio presentation has been prepared for review; it should be added to this public repository only after final figure/attribution approval.
+The project report credits **Amirhossein Shokri, Nima Khamsehzadeh, Sildev Kumar Ray and MohammadReza Abolhasani**. A separate **[10-slide PDF technical portfolio presentation](GPEM_Emergency_Road_Accessibility_Portfolio.pdf)** is included instead of the full report. It reproduces selected GIS figures from the group report; final contributor approval and attribution remain important.
