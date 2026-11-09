@@ -1,5 +1,7 @@
 # Earthquake Emergency Road Accessibility
 
+[![Python source checks](https://github.com/amirshokri17/seismic-emergency-road-accessibility/actions/workflows/python-checks.yml/badge.svg)](https://github.com/amirshokri17/seismic-emergency-road-accessibility/actions/workflows/python-checks.yml)
+
 **Python/ArcPy automation · Damage-aware Dijkstra routing · Road reopening prioritization**
 
 A curated technical portfolio from the team project **Geospatial Data Processing to Support Seismic Emergency Management** at Politecnico di Milano. The case study uses the **30 October 2016 Central Italy earthquake** to examine emergency road access around **Amatrice, Accumoli and Illica**.
