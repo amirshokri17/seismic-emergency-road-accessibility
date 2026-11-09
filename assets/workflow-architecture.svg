@@ -19,7 +19,7 @@
 <text x="46" y="99" class="sub">Implemented analysis workflow  ·  Politecnico di Milano GPEM case study</text>
 <text x="46" y="134" class="lab">01 / PREPARE ANALYTICAL INPUTS</text>
 <!-- connections behind the nodes -->
-<path class="minor" d="M184 291 V324 H1116 M489 291 V324 M794 291 V324 M1116 291 V324"/>
+<path class="minor" d="M184 291 V324 H1099 M489 291 V324 M794 291 V324 M1099 291 V324"/>
 <path class="arrow" d="M650 324 V355" marker-end="url(#head)"/>
 <path class="arrow" d="M650 461 V494" marker-end="url(#head)"/>
 <path class="arrow" d="M585 562 H719" marker-end="url(#head)"/>
