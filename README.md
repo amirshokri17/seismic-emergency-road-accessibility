@@ -8,6 +8,10 @@ A curated technical portfolio from the team project **Geospatial Data Processing
 
 > **Academic geospatial decision-support prototype, not an operational routing or road-safety tool.** This public repository contains five **publication-safe adaptations of original project scripts**. Machine-specific configuration and the default output-deletion policy were changed; the graph, Dijkstra, damage and priority algorithms were not rewritten. Original GIS input data are not included.
 
+## Technical portfolio presentation
+
+**[View the 10-slide PDF — GIS automation, custom Dijkstra and reopening priorities](docs/GPEM_Emergency_Road_Accessibility_Portfolio.pdf)**. It contains selected maps from the updated academic report and two legible workflow diagrams. The full 46-page group report is intentionally not published here.
+
 ## The problem
 
 After a damaging earthquake, a mapped road network alone cannot indicate whether emergency services can reach affected settlements. Road debris, landslides, reduced passage width, uncertain observations and local-road connectivity complicate route choice.
@@ -97,7 +101,7 @@ The full ArcPy/GIS workflow, route counts and mapped results cannot be independe
 
 The URL is a **FeatureServer REST service**, *not* a finished end-user web dashboard. The report describes web-map configuration, dashboard development and mobile field validation as **implementation steps**, not features already demonstrated here. Service content and anonymous accessibility should be tested directly by prospective users; live verification was unavailable in the review environment.
 
-The updated **46-page group report remains unpublished** in this repository. Instead, a focused portfolio presentation is being prepared for review, using selected source maps from pages 23, 37 and 41 and a clearer two-stage workflow diagram. For context, Part I of the report also covers Norcia seismic vulnerability and damage scenarios and 25 municipalities; the curated repository emphasizes the stronger Part II automation, Dijkstra and reopening strategies.
+The updated **46-page group report remains unpublished** in this repository. Instead, a focused **[10-slide portfolio PDF](docs/GPEM_Emergency_Road_Accessibility_Portfolio.pdf)** is published, using selected source maps from pages 23, 37 and 41 and a clearer two-stage workflow diagram. For context, Part I of the report also covers Norcia seismic vulnerability and damage scenarios and 25 municipalities; the curated repository emphasizes the stronger Part II automation, Dijkstra and reopening strategies.
 
 For WebGIS status, implementation boundaries and source-layer groups, read [Published service notes](docs/webgis-and-report.md).
 
