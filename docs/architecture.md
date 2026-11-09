@@ -12,7 +12,7 @@ This repository documents a selected part of the original GPEM group project. It
 | Damage integration | Earlier work, not republished | Associate provided and visually reviewed damage records with network sections | Confirmed and validation-needed road sections |
 | Graph and routing | `29_emergency_service_accessibility_analysis.py` | Build graph; route with custom Dijkstra; derive target status and response corridors | Prepared roads, facilities, targets, damaged road sections |
 | Reopening priorities | `31_update_road_reopening_priority_from_corridors.py` | Link confirmed damage to selected corridors and classify reopening attention | Corridor layer and confirmed road damage |
-| Publication | GIS maps / WebGIS | Communicate spatial results and uncertain areas | Actual GIS outputs; public link pending |
+| Publication | GIS maps / WebGIS | Communicate spatial results and uncertain areas | ArcGIS FeatureServer published; separate application not demonstrated |
 
 ## Engineering strategy
 
@@ -37,3 +37,9 @@ Road links on selected response corridors were analyzed for damage, width-based 
 ## Reproducibility boundary
 
 The five published, configuration-safe script adaptations alone are **not** an end-to-end reproducible pipeline. They assume the ArcGIS Pro environment, original geodatabase schemas, coordinate systems and prerequisite input layers. The report and published documentation describe the steps without inventing missing data or results.
+
+## Published service boundary
+
+The updated **46-page** GPEM report, Section 14, documents a published **[ArcGIS FeatureServer](https://services7.arcgis.com/XOvkSqDDbi6QLE5s/arcgis/rest/services/GPEM_ROAD_MANAGEMENT/FeatureServer)** with base, damage/uncertainty, accessibility and reopening-priority layers. A hosted feature service is a spatial-data publication layer. It is not equivalent to a configured user-facing WebGIS map, dashboard or field-validation app; those are described as further implementation steps.
+
+![Implementation overview](../assets/workflow-architecture.svg)
