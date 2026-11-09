@@ -1,5 +1,6 @@
-# Project figures
+# Visual assets
 
-High-resolution original maps and architecture diagrams may be added here after confirming ownership, contributor permission and attribution.
+- [GPEM analytical workflow (SVG)](workflow-architecture.svg) — readable two-stage figure showing data preparation, weighted Dijkstra routing, corridor assessment, reopening priorities and published data service.
+- Original report maps have been included in a **separate curated portfolio PDF prepared for review**. They are not duplicated here until final public-sharing approval.
 
-The final report and interactive WebGIS are not yet bundled or linked in the public repository.
+The full 46-page academic report is not part of this technical repository. The service endpoint is linked from the [README](../README.md) and the [service documentation](../docs/webgis-and-report.md).
