@@ -1,0 +1,42 @@
+# Python and local environments
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+.env
+.env.*
+
+# ArcGIS workspaces and GIS data (not included in this showcase)
+*.gdb/
+*.geodatabase/
+*.aprx
+*.aprx.lock
+*.sde
+*.gpkg
+*.shp
+*.shx
+*.dbf
+*.prj
+*.tif
+*.tiff
+*.jp2
+*.las
+*.laz
+*.lyrx
+
+# Generated data, models and temporary outputs
+data/*
+!data/README.md
+*.log
+*.tmp
+*.pkl
+*.pt
+*.pth
+*.zip
+
+# Editor and operating system
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
