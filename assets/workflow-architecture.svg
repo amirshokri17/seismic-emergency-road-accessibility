@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1300" height="790" viewBox="0 0 1300 790" role="img" aria-labelledby="title desc">
+<title id="title">GPEM road management: from geospatial data to emergency reopening decisions</title>
+<desc id="desc">Four inputs: OSM roads, damage evidence, emergency service facilities, and response targets. They feed prepared road graph and Dijkstra analysis; selected routes become corridor accessibility and road-reopening priorities, published through an ArcGIS FeatureServer.</desc>
+<defs>
+ <style>
+ .bg{fill:#f7faf9}.title{font:700 34px Arial,sans-serif;fill:#102935}.sub{font:17px Arial,sans-serif;fill:#59747d}
+ .lab{font:700 14px Arial,sans-serif;letter-spacing:1.5px;fill:#0f987f}
+ .card{fill:#fff;stroke:#d7e7e8;stroke-width:2}.head{font:700 22px Arial,sans-serif;fill:#0f2a36}
+ .body{font:16px Arial,sans-serif;fill:#58717a}.tag{font:700 13px Arial,sans-serif;fill:#0b947f}
+ .dark{fill:#102f3c;stroke:#1d5661;stroke-width:2}.darkhead{font:700 25px Arial,sans-serif;fill:#fff}
+ .darkbody{font:16px Arial,sans-serif;fill:#c2d9dd}
+ .arrow{stroke:#13a38d;stroke-width:4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+ .minor{stroke:#83aab0;stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round}
+ </style>
+ <marker id="head" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#13a38d"/></marker>
+</defs>
+<rect class="bg" width="1300" height="790"/>
+<text x="46" y="63" class="title">Road damage to emergency access decisions</text>
+<text x="46" y="99" class="sub">Implemented analysis workflow  ·  Politecnico di Milano GPEM case study</text>
+<text x="46" y="134" class="lab">01 / PREPARE ANALYTICAL INPUTS</text>
+<!-- connections behind the nodes -->
+<path class="minor" d="M184 291 V324 H1116 M489 291 V324 M794 291 V324 M1116 291 V324"/>
+<path class="arrow" d="M650 324 V355" marker-end="url(#head)"/>
+<path class="arrow" d="M650 461 V494" marker-end="url(#head)"/>
+<path class="arrow" d="M585 562 H719" marker-end="url(#head)"/>
+<path class="minor" d="M348 630 V663 H952 V630"/>
+<path class="arrow" d="M650 663 V687" marker-end="url(#head)"/>
+<!-- top inputs -->
+<rect x="46" y="157" width="276" height="134" rx="14" class="card"/>
+<rect x="46" y="157" width="276" height="6" rx="3" fill="#0fa98e"/>
+<text x="66" y="196" class="head">OSM road network</text>
+<text x="66" y="226" class="body">Retain minor links; classify</text>
+<text x="66" y="249" class="body">usability and width proxies</text>
+<text x="66" y="276" class="tag">SCRIPT 27</text>
+<rect x="351" y="157" width="276" height="134" rx="14" class="card"/>
+<rect x="351" y="157" width="276" height="6" rx="3" fill="#e99a36"/>
+<text x="371" y="196" class="head">Road damage evidence</text>
+<text x="371" y="226" class="body">Provided and reviewed records</text>
+<text x="371" y="249" class="body">confirmed / validation-needed</text>
+<text x="371" y="276" class="tag">DOCUMENTED PREPARATION</text>
+<rect x="656" y="157" width="276" height="134" rx="14" class="card"/>
+<rect x="656" y="157" width="276" height="6" rx="3" fill="#0fa98e"/>
+<text x="676" y="196" class="head">Emergency facilities</text>
+<text x="676" y="226" class="body">Clean and group the</text>
+<text x="676" y="249" class="body">response service origins</text>
+<text x="676" y="276" class="tag">SCRIPT 26</text>
+<rect x="961" y="157" width="276" height="134" rx="14" class="card"/>
+<rect x="961" y="157" width="276" height="6" rx="3" fill="#0fa98e"/>
+<text x="981" y="196" class="head">Response targets</text>
+<text x="981" y="226" class="body">Amatrice · Accumoli · Illica</text>
+<text x="981" y="249" class="body">Origin-destination network</text>
+<text x="981" y="276" class="tag">SCRIPT 28</text>
+<!-- routing -->
+<rect x="358" y="359" width="584" height="103" rx="18" class="dark"/>
+<text x="650" y="402" text-anchor="middle" class="darkhead">Weighted graph + custom Dijkstra</text>
+<text x="650" y="430" text-anchor="middle" class="darkbody">Damage-aware costs · conservative / degraded scenarios · Script 29</text>
+<text x="46" y="482" class="lab">02 / ROUTE, CLASSIFY AND PRIORITIZE</text>
+<!-- downstream -->
+<rect x="111" y="503" width="474" height="127" rx="16" class="card"/>
+<rect x="111" y="503" width="474" height="6" fill="#0fa98e"/>
+<text x="136" y="545" class="head">Response corridors + access status</text>
+<text x="136" y="575" class="body">Extract selected route links and classify</text>
+<text x="136" y="599" class="body">open / restricted / blocked / uncertain</text>
+<rect x="718" y="503" width="474" height="127" rx="16" class="card"/>
+<rect x="718" y="503" width="474" height="6" fill="#e99a36"/>
+<text x="744" y="545" class="head">Road reopening priorities</text>
+<text x="744" y="575" class="body">Match confirmed damage to response</text>
+<text x="744" y="599" class="body">corridors; prioritize interventions · Script 31</text>
+<!-- publication -->
+<rect x="300" y="692" width="700" height="67" rx="14" class="dark"/>
+<text x="650" y="723" text-anchor="middle" class="darkhead" style="font-size:22px">GIS maps + published ArcGIS FeatureServer</text>
+<text x="650" y="747" text-anchor="middle" class="darkbody" style="font-size:14px">Hosted data service; full web app and dashboards are separate development steps</text>
+</svg>
