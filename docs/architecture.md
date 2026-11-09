@@ -36,4 +36,4 @@ Road links on selected response corridors were analyzed for damage, width-based 
 
 ## Reproducibility boundary
 
-The five original scripts alone are **not** an end-to-end reproducible pipeline. They assume the ArcGIS Pro environment, original geodatabase schemas, coordinate systems and prerequisite input layers. The report and published documentation describe the steps without inventing missing data or results.
+The five published, configuration-safe script adaptations alone are **not** an end-to-end reproducible pipeline. They assume the ArcGIS Pro environment, original geodatabase schemas, coordinate systems and prerequisite input layers. The report and published documentation describe the steps without inventing missing data or results.
