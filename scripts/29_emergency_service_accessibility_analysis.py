@@ -997,7 +997,8 @@ def redundancy_level(route_statuses: List[str], overlap_ratio: float = 0.0) -> s
     )
 
     if len(good) >= 2:
-        level = "high"    elif len(good) >= 1 and len(mid) >= 1:
+        level = "high"
+    elif len(good) >= 1 and len(mid) >= 1:
         level = "medium"
     elif len(usable) == 1:
         level = "low"
